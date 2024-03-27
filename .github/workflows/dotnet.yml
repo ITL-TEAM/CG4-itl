@@ -40,6 +40,6 @@ jobs:
           version=$(date -u +"%y.%m.%d").${{ github.run_number }}
           dotnet pack --no-restore -o __out -p:Version=$version $project
         done
-        dotnet nuget push "__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_API}}
+        dotnet nuget push "__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_API}} --source https://api.nuget.org/v3/index.json
 
 
