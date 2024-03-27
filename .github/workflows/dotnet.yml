@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - DOT-28-nuget-pack
+      - dotnet-test
   pull_request:
     branches:
       - main
       - DOT-28-nuget-pack
+      - dotnet-test
 
 env:
   NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API }}
