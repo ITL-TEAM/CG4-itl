@@ -2,9 +2,13 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - DOT-28-nuget-pack
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - DOT-28-nuget-pack
 
 env:
   NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API }}
@@ -26,8 +30,8 @@ jobs:
         source-url: https://api.nuget.org/v3/index.json
         dotnet-version: 6.0.x
 
-    - name: Restore dependencies
-      run: dotnet restore
+    # - name: Restore dependencies
+    #   run: dotnet restore
 
     - name: Build and publish
       run: |
