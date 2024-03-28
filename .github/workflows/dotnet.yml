@@ -11,7 +11,7 @@ on:
       - DOT-28-nuget-pack
 
 env:
-  NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API }}
+  NUGET_AUTH_TOKEN: ${{ secrets.NUGET_KEY }}
   VERSION_STATIC: 1.0.0  # Specify the desired static version here
 
 jobs:
@@ -39,4 +39,4 @@ jobs:
         for project in src/ITL.DataAccess/*.csproj src/ITL.Executor/*.csproj src/ITL.Extensions/*.csproj src/ITL.Impl.Dapper.PostgreSql/*.csproj src/ITL.Impl.Dapper/*.csproj src/ITL.Impl.EF/*.csproj src/ITL.Impl.ElasticSearch/*.csproj src/ITL.Impl.Kafka/*.csproj src/ITL.Impl.Memory/*.csproj src/ITL.Impl.MongoDB/*.csproj src/ITL.Impl.Prometheus/*.csproj src/ITL.Impl.Rabbit/*.csproj src/ITL.Templ.WebApi/*.csproj src/ITL.Web/*.csproj; do
           dotnet pack --no-restore -o __out -p:Version=$VERSION_STATIC $project
         done
-        dotnet nuget push "__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_API}}
+        dotnet nuget push "__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_KEY}}
