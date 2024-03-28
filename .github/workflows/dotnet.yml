@@ -11,7 +11,7 @@ on:
       - DOT-28-nuget-pack
 
 env:
-  NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API }}
+  NUGET_AUTH_TOKEN: ${{ secrets.NUGET_KEY }}
   # VERSION_STATIC: 1.0.${{ github.run_number }}
 
 jobs:
@@ -40,6 +40,6 @@ jobs:
           version=$(date -u +"%y.%m.%d").${{ github.run_number }}
           dotnet pack --no-restore -o __out -p:Version=$version $project
         done
-        dotnet nuget push "__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_API}} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push "__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_KEY}}
 
 
